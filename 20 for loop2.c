@@ -1,32 +1,27 @@
 #include<stdio.h>
 int main()
 {
-    int N,i;
-    int noise;
-    int maxnoise;
-    int noisycount=0;
+    int totaldata,N;
+    int usage;
+    int successfulldays=0;
+    scanf("%d",&totaldata);
     scanf("%d",&N);
-    scanf("%d",&noise);
-    maxnoise=noise;
-    if(noise>70)
+    for(int i=0;i<N;i++)
     {
-        noisycount++;
-    }
-    for(i=1;i<N;i++)
-    {
-        scanf("%d",&noise);
+        scanf("%d",&usage);
         
-        if(noise>maxnoise)
+        if(totaldata>=usage)
         {
-            maxnoise=noise;
+            totaldata-=usage;
+            successfulldays++;
         }
-        if(noise>70)
+        else
         {
-            noisycount++;
+            break;
         }
     }
-    printf("Maximum noise:%d\n",maxnoise);
-    printf("Noisy periods:%d",noisycount);
+    printf("Remaining data:%d\n",totaldata);
+    printf("Successful Days:%d",successfulldays);
     
     return 0;
 }
